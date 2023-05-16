@@ -23,3 +23,31 @@ Each record contains the following values.
 * `x` - latitude in crs = 32054 (the coordinate reference system used by the City of Milwaukee)
 * `y` - longitude in crs = 32054
 * `address` - the parcel address, derived from parcel records
+
+# ParcelsWithGeographies.csv.gz
+
+This file contains the annual geocoded parcel records needed to construct denominators in foreclosure rate calculations. It is identical to ParcelsWithGeographies.rds; the RDS format is associated with R programming language.
+
+## sources
+
+Derived from Milwaukee's Master Property File (MPROP), this file contains 1 row for every non-tax exempt house in each year from 1990 through 2022. In other words, I remove those properties which are already owned by the city of Milwaukee.
+
+## fields
+
+Each record contains the following values.
+
+* `TAXKEY` - 10-digit parcel identifier
+* `year` - the year of the observation. These are taken from year-end snapshots of the MPROP database, so values for, e.g. 2001, reflect values as of December 2001. In other words, take these values to represent the starting point for the following year.
+* `aldermanic_2022` - the aldermanic district under the latest boundaries in which this parcel resides
+* `neighborhood` - the city neighborhood as defined by the Department of City Development. These boundaries are purely informational and have no official status.
+* `tract_2010` - the tract FIPS code for tract boundaries used in the 2010 census. These boundaries and codes are the same as those used in the American Community Survey throughout the 2010s in the City of Milwaukee.
+* `tract_2020` - the tract FIPS code for tract boundaries used in the 2020 census.
+* `x` - latitude in crs = 32054 (the coordinate reference system used by the City of Milwaukee)
+* `y` - longitude in crs = 32054
+
+# Other files
+
+Files beginning with "AnnualResidentialParcels_" contain the total number of houses, excluding those owned by the city of Milwaukee, at the end of each year for the specified geography. 
+
+The various `.geojson` files contain GIS polygons for the specified geography.
+
