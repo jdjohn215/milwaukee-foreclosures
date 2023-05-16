@@ -22,3 +22,4 @@ Each record contains the following values.
 * `grantee_name` - the name of the recipient of the property during the foreclosure, typically the city or a financial institution
 * `x` - latitude in crs = 32054 (the coordinate reference system used by the City of Milwaukee)
 * `y` - longitude in crs = 32054
+* `address` - the parcel address, derived from parcel records
