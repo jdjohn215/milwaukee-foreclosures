@@ -16,7 +16,7 @@ Data can also be aggregated into any desired geography. In the `processed-data` 
 
 Data can also be aggregated across time. The next map shows the neighborhood cumulative foreclosure rate from 2007 to 2016. In other words, it shows the percent of unique houses in a neighborhood which experienced at least one foreclosure during that decade. The table shows the top 10 neighborhoods by this metric. More than 3-in-10 houses underwent at least foreclosure in Sherman Park, Washington Park, Maple Tree, and Silver Swan.
 
-![](images/NeighborhoodForeclosures_2007to2016_cumulative.png.png)
+![](images/NeighborhoodForeclosures_2007to2016_cumulative.png)
 
 **Cumulative foreclosure rates form 2007-2016, top 10 neighborhoods**
 
