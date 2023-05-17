@@ -1,12 +1,13 @@
 rm(list = ls())
 
 library(tidyverse)
+library(tmap)
 
 foreclosures <- read_csv("processed-data/ForeclosuresGeocoded.csv")
 parcels <- read_rds("source-data/ParcelsWithGeographies.rds")
 
 ################################################################################
-cumulative.by.neighborhood <- d %>%
+cumulative.by.neighborhood <- foreclosures %>%
   group_by(neighborhood) %>%
   summarise(foreclosures = n(),
             foreclosed_properties = n_distinct(TAXKEY))
@@ -18,7 +19,7 @@ parcels.by.neighborhood <- parcels %>%
 
 foreclosure.totals.by.neighorhood <- left_join(parcels.by.neighborhood,
                                                cumulative.by.neighborhood) %>%
-  mutate(foreclosed_properties = if_else(is.na(foreclosed_properties), 0, foreclosed_properties),
+  mutate(foreclosed_properties = if_else(is.na(foreclosed_properties), 0, as.numeric(foreclosed_properties)),
          foreclosure_share = (foreclosed_properties/parcels)*100)
 
 neighborhood.shp <- st_read("source-data/cityNeighborhoods.geojson")

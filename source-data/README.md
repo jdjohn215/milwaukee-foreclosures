@@ -30,7 +30,7 @@ This file contains the annual geocoded parcel records needed to construct denomi
 
 ## sources
 
-Derived from Milwaukee's Master Property File (MPROP), this file contains 1 row for every non-tax exempt house in each year from 1990 through 2022. In other words, I remove those properties which are already owned by the city of Milwaukee.
+Derived from Milwaukee's Master Property File (MPROP), this file contains 1 row for every single-family home, condo, duplex, or triplex/quadplex house in each year from 1990 through 2022.
 
 ## fields
 
@@ -44,6 +44,7 @@ Each record contains the following values.
 * `tract_2020` - the tract FIPS code for tract boundaries used in the 2020 census.
 * `x` - latitude in crs = 32054 (the coordinate reference system used by the City of Milwaukee)
 * `y` - longitude in crs = 32054
+* `city_owned` - TRUE or FALSE. Depending on the analysis in question, it might be appropriate to exclude houses already owned by the city from the analysis.
 
 # Other files
 

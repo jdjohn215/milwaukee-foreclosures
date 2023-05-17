@@ -4,7 +4,11 @@ Although the massive wave of foreclosures during and following the 2008 Housing 
 
 See the README in `source-data` directory for details about data sources, coverage, and fields.
 
-This data could be used in a variety of ways including studying parcel-level effects on properties that experienced foreclosures.
+This data could be used in a variety of ways. I include the grantee in each foreclosure conveyance. At a basic level, we can use this to distinguish between city (tax) foreclosures and lender (mortgage) foreclosures. A more detailed analysis could identify the behavior of specific lenders.
+
+![](images/CitywideTotalsByType.png)
+
+We can also use the data to study parcel-level effects on properties that experienced foreclosures.
 
 For instance, the map below shows where each kind of foreclosure took place during 2005-2016 in the neighborhoods surrounding Washington Park. Future research could compare change in owner occupancy or home values between foreclosed and non-foreclosed houses on the same block. The foreclosure dataset includes the name of the grantee in each conveyance. Among other possibilities, this allows us to distinguish between city tax foreclosures and other kinds of foreclosures (i.e. mortgage-related).
 

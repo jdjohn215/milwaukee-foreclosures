@@ -17,7 +17,7 @@ alder.shp %>%
   labs(title = "Residential foreclosure rates in Milwaukee aldermanic districts",
        subtitle = "using aldermanic district boundaries adopted in 2022",
        caption = str_wrap("Dataset created by John D. Johnson using a combination of state and city records. These statistics likely undercount the true number of foreclosures. See github.com/jdjohn215/milwaukee-foreclosures for details.", 110),
-       fill = "foreclosures per 1,000 non-tax exempt houses") +
+       fill = "foreclosures per 1,000 non-city owned houses") +
   theme_void() +
   theme(plot.background = element_rect(fill = "white", colour = "white"),
         plot.title.position = "plot",
