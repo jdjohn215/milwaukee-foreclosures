@@ -23,6 +23,8 @@ Each record contains the following values.
 * `x` - latitude in crs = 32054 (the coordinate reference system used by the City of Milwaukee)
 * `y` - longitude in crs = 32054
 * `address` - the parcel address, derived from parcel records
+* `status_before_foreclosure` - ownership status of the parcel at the beginning of the year in which the foreclosure took place. This value is derived from the Master Property File and presumably represents the foreclosed property owner in most instances.
+* `status_2022` - the ownership status of the parcel at the end of 2022, derived from the MPROP file. This value is useful for determining the longer-term outcome of the foreclosed property.
 
 # ParcelsWithGeographies.csv.gz
 
