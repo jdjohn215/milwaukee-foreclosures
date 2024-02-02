@@ -3,8 +3,10 @@ rm(list = ls())
 library(tidyverse)
 library(tmap)
 
-foreclosures <- read_csv("processed-data/ForeclosuresGeocoded.csv")
-parcels <- read_rds("source-data/ParcelsWithGeographies.rds")
+foreclosures <- read_csv("processed-data/ForeclosuresGeocoded.csv") %>%
+  filter(between(foreclose_year, 2007, 2016))
+parcels <- read_rds("source-data/ParcelsWithGeographies.rds") %>%
+  filter(between(year, 2007, 2016))
 
 ################################################################################
 cumulative.by.neighborhood <- foreclosures %>%
@@ -13,7 +15,6 @@ cumulative.by.neighborhood <- foreclosures %>%
             foreclosed_properties = n_distinct(TAXKEY))
 
 parcels.by.neighborhood <- parcels %>%
-  filter(between(year, 2007, 2016)) %>%
   group_by(neighborhood) %>%
   summarise(parcels = n_distinct(TAXKEY))
 

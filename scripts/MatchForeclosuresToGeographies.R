@@ -3,10 +3,13 @@ rm(list = ls())
 library(tidyverse)
 library(sf)
 
-foreclosures <- read_csv("source-data/ResidentialForeclosures_1995to2022.csv")
+old.processed <- read_csv("processed-data/ForeclosuresGeocoded.csv")
+updated.foreclosures <- read_csv("source-data/ResidentialForeclosures_1995to2023.csv")
+new.foreclosures <- updated.foreclosures |>
+  filter(! legal_doc %in% old.processed$legal_doc)
 
 # identify the unique coordinate points and convert to simple features object
-unique.coordinates <- foreclosures %>%
+unique.coordinates <- new.foreclosures %>%
   group_by(x, y) %>%
   summarise() %>%
   ungroup() %>%
@@ -45,10 +48,18 @@ coords.in.neighborhoods <- unique.coordinates %>%
   st_intersection(neighborhoods)
 
 # merge add geography codes to foreclosure data
-geocoded.foreclosures <- foreclosures %>%
+geocoded.foreclosures <- new.foreclosures %>%
   left_join(st_drop_geometry(coords.in.neighborhoods)) %>%
   left_join(st_drop_geometry(coords.in.tracts.2010)) %>%
   left_join(st_drop_geometry(coords.in.tracts.2020)) %>%
   left_join(st_drop_geometry(coords.in.tracts.alder))
-write_csv(geocoded.foreclosures, "processed-data/ForeclosuresGeocoded.csv")
+
+all.updated <- old.processed |>
+  filter(legal_doc %in% updated.foreclosures$legal_doc) |>
+  mutate(tract_2010 = as.character(tract_2010),
+         tract_2020 = as.character(tract_2020),
+         aldermanic_2022 = as.character(aldermanic_2022)) |>
+  bind_rows(geocoded.foreclosures)
+
+write_csv(all.updated, "processed-data/ForeclosuresGeocoded.csv")
 
