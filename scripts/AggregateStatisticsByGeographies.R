@@ -7,7 +7,7 @@ foreclosures <- read_csv("processed-data/ForeclosuresGeocoded.csv")
 ############################################################################
 # aldermanic district comparison
 parcels.by.ald <- read_csv("source-data/AnnualResidentialParcels_Aldermanic2022.csv") %>%
-  filter(between(year_end, 1994, 2022)) %>%
+  filter(between(year_end, 1994, 2024)) %>%
   mutate(privately_owned_parcels = parcels - city_owned)
 
 foreclosures.by.ald <- foreclosures %>%
@@ -25,7 +25,7 @@ write_csv(foreclosure.rates.by.ald, "processed-data/AnnualForeclosureStats_alder
 ############################################################################
 # tracts 2020 comparison
 parcels.by.tract2020 <- read_csv("source-data/AnnualResidentialParcels_Tract2020.csv") %>%
-  filter(between(year_end, 1994, 2022)) %>%
+  filter(between(year_end, 1994, 2024)) %>%
   mutate(privately_owned_parcels = parcels - city_owned)
 
 foreclosures.by.tract2020 <- foreclosures %>%
@@ -44,7 +44,7 @@ write_csv(foreclosure.rates.by.tract2020, "processed-data/AnnualForeclosureStats
 ############################################################################
 # tracts 2010 comparison
 parcels.by.tract2010 <- read_csv("source-data/AnnualResidentialParcels_Tract2010.csv") %>%
-  filter(between(year_end, 1994, 2022)) %>%
+  filter(between(year_end, 1994, 2024)) %>%
   mutate(privately_owned_parcels = parcels - city_owned)
 
 foreclosures.by.tract2010 <- foreclosures %>%
@@ -63,7 +63,7 @@ write_csv(foreclosure.rates.by.tract2010, "processed-data/AnnualForeclosureStats
 ############################################################################
 # NEIGHBORHOOD comparison
 parcels.by.neighborhood <- read_csv("source-data/AnnualResidentialParcels_Neighborhood.csv") %>%
-  filter(between(year_end, 1994, 2022)) %>%
+  filter(between(year_end, 1994, 2024)) %>%
   mutate(privately_owned_parcels = parcels - city_owned)
 
 foreclosures.by.neighborhood <- foreclosures %>%
