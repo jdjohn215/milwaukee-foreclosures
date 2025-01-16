@@ -4,7 +4,7 @@ library(tidyverse)
 library(sf)
 
 old.processed <- read_csv("processed-data/ForeclosuresGeocoded.csv")
-updated.foreclosures <- read_csv("source-data/ResidentialForeclosures_1995to2023.csv")
+updated.foreclosures <- read_csv("source-data/ResidentialForeclosures_1995to2024.csv")
 new.foreclosures <- updated.foreclosures |>
   filter(! legal_doc %in% old.processed$legal_doc)
 
